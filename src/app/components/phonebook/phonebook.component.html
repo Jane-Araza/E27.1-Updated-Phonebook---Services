@@ -1,0 +1,26 @@
+
+<app-add-contact></app-add-contact>
+<div class="wrapper" *ngIf = "updateContactDetails">
+    <input type="text" name="name" [(ngModel)]="updateContactDetails.name">
+    <input type="text" name ="number" [(ngModel)]="updateContactDetails.number">
+</div>
+
+<div>
+    <table>
+      <tr>
+          <th>Name</th>
+          <th>Phone Number</th>
+
+      </tr>
+      <tr *ngFor = "let contact of contact; let i=index">
+          <td>{{contact.name}}</td>
+          <td>{{contact.number}}</td>
+          <td> 
+              <span><button type="button" [class.selected] = "contact === updateContactDetails"
+                (click)="updateContact(contact)" >Edit</button></span>
+              <span><button (click)="deleteContact(i)">Delete</button></span>
+          </td>
+      </tr>
+     
+    </table>
+</div>
